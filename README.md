@@ -15,8 +15,8 @@
 以debian系统下的`php7.1`为例<br>
 `php.ini`文件在`/etc/php/7.1/cli/php.ini`
 
-安装： 
-
+部署： 
+【项目的基础路径默认配置为`/qa/api`(*可以在`config/app.php`中修改`app_host`进行调整*)，因此需要将项目放到前端项目下】
 1. 进入项目目录之后通过`composer install`安装依赖
 2. 建立数据库`gp`，导入数据表信息`_mysql/gp.sql`
     1. 将系统命令行定位到该项目目录下，之后使用`mysql -uroot -p`并输入自己的数据库用户密码后进入mysql命令模式
@@ -27,8 +27,8 @@
 3. 修改`config/database.php`下的数据库用户密码信息，保证`Thinkphp`能够正确连接到`mysql`数据库
     
 运行：
-1. 将项目放置到`apache`或`nginx`服务器的项目目录下，并配置相应的域名解析，保证正常的`http请求`
-2. 修改runtime目录下的权限，保证日志记录`sudo chmod o+w -R runtime`
+1. 将项目放置到`apache`或`nginx`服务器的项目目录下，为`./public`目录建立软连接到前端项目`qa`的子目录`{server_path}/qa/api`
+2. 在项目目录中修改runtime目录下的权限，保证日志记录`sudo chmod o+w -R runtime`
 3. 将系统命令行定位到该项目目录下，之后使用`php think swoole:server`运行swoole的`websocket服务器`
 4. *定期清理日志记录`php think clear`或者`sudo rm -rf runtime/*`
     

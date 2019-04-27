@@ -17,7 +17,7 @@ return [
     // 应用名称
     'app_name'               => '',
     // 应用地址
-    'app_host'               => '',
+    'app_host'               => '/qa/api',
     // 应用调试模式
     'app_debug'              => true,
     // 应用Trace
