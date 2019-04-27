@@ -32,6 +32,12 @@
 3. 将系统命令行定位到该项目目录下，之后使用`php think swoole:server`运行swoole的`websocket服务器`
 4. *定期清理日志记录`php think clear`或者`sudo rm -rf runtime/*`
     
+python项目部署：
+python项目在`./python_project`目录下，需要通过`virtualenv`隔离环境之后安装依赖
+1. 在目录`./python_project`下使用`virtualenv automsg`为项目`automsg`建立独立的python环境
+2. 进入`./python_project/automsg`目录下，使用`source bin/activate`进入虚拟环境`(automsg)`
+3. 使用`pip install -r requirements.txt`安装依赖
+4. `deactivate`退出虚拟环境
     
 --------
 项目目录说明
