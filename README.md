@@ -15,12 +15,26 @@
 以debian系统下的`php7.1`为例<br>
 `php.ini`文件在`/etc/php/7.1/cli/php.ini`
 
+其他系统所需的支持：
+- `mysql-server`请记住自己配置的root账号密码
+- `apache2`
+  + 使用`a2enmod rewrite`增加rewrite模块支持
+  + `libapache2-mod-php7.x`(建议在php7.x安装后再安装)
+  + 增加完依赖后通过`sudo service apache2 reload`重启服务使增加的模块生效
+- `php7.0`或以上
+  + `php7.x-mbstring`
+  + `php7.x-mysql`
+  + `/etc/php7.x/cli/php.ini`下添加`extension=swoole.so`支持
+- `composer` [参考](https://getcomposer.org/download/)进行下载
+  
+
 部署： 
+
 【项目的基础路径默认配置为`/qa/api`(*可以在`config/app.php`中修改`app_host`进行调整*)，因此需要将项目放到前端项目下】
 1. 进入项目目录之后通过`composer install`安装依赖
 2. 建立数据库`gp`，导入数据表信息`_mysql/gp.sql`
     1. 将系统命令行定位到该项目目录下，之后使用`mysql -uroot -p`并输入自己的数据库用户密码后进入mysql命令模式
-    2. `create table gp;`创建数据库`gp`
+    2. `create database gp;`创建数据库`gp`
     3. `use gp;` 进入数据库`gp`
     4. `source _mysql/gp.sql`导入数据表信息即可
     5. `exit`退出mysql命令模式
